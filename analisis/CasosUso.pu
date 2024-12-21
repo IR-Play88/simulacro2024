@@ -1,0 +1,10 @@
+@startuml Casos de uso
+left to right direction
+actor Usuario as usr
+
+rectangle Aplicacion{
+    usecase "Gestion de matriculación" as gestion
+
+    usr -- gestion
+}
+@enduml
