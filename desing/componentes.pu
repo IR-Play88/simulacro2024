@@ -1,0 +1,86 @@
+@startuml Diag Componentes
+
+component view
+component controller
+component model
+
+view ..> controller
+controller ..> model
+
+@enduml
+
+
+@startuml disenyo
+allow_mixing
+top to bottom direction
+
+package view{
+    component View <<FXML file>>
+
+    component ViewController <<java>>
+}
+
+package controller{
+    component InstitutoController <<java>>
+}
+
+package model{
+    package bbdd{
+        interface InstitutoDAO{
+            +buscarAlumno(DNI: String)
+            +buscarModulo(ID: int)
+        }
+
+        component Database <<java>>
+
+        InstitutoDAO <|.. Database
+    }
+
+    package entity{
+        interface Calculable {
+            +calcularImportePorHoras()
+            +calcularImporteFinal()
+            +calcularDescuentos()
+            +calcularGrabavemes()
+        }
+
+        component Instituto <<java>>
+        
+        Calculable <|.. Instituto
+    }
+
+    package exception{
+        component InstitutoException <<java>>
+    }
+
+    package util{
+
+        package input{
+            component Input <<java>>
+            interface Fichero {
+                + leer(): byte[]
+                + escribir(byte[], ruta: String)
+            }
+        }
+
+        package export{
+            interface Exportable {
+                + exportar(String extension)
+            }
+
+            component Export <<java>>
+        }
+         Fichero <|.. Input
+         Exportable <|.. Export
+    }
+}
+
+ViewController ..> View: use
+ViewController ..> InstitutoController: use
+
+InstitutoController ..> Exportable: use
+InstitutoController ..> Fichero: use
+InstitutoController ..> InstitutoException: use
+InstitutoController ..> Calculable: use
+InstitutoController ..> InstitutoDAO: use
+@enduml
