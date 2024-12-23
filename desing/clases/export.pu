@@ -1,0 +1,26 @@
+@startuml export
+
+set separator none
+package model.util.export{
+
+
+    class Util{
+        +  public void exportar(String nombreArcSal, String nombreArcEnt, String extension, String rutaArcEnt)
+    }
+
+    interface ExportableUtil{
+
+        + exportar(ruta:String): void
+        + getUser(): String
+        + getGrupo(): String
+    }
+
+
+}
+
+
+ExportableUtil <|.. Util
+
+
+@enduml
+

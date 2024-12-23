@@ -1,0 +1,35 @@
+@startuml ClaseBBDD
+allow_mixing
+set separator none
+top to bottom direction
+
+package model.bbdd{
+    interface InstitutoDAO{
+
+    }
+
+    enum DBTipo{
+
+    }
+
+    class InstitutoDBFactory{
+
+    }
+
+    abstract InstitutoDAOImp{
+
+    }
+
+    class InstitutoSQLiteDAOImpMock{
+
+    }
+
+    class InstitutoSQLiteDAOImp{
+
+    }
+}
+
+InstitutoDAOImp <|-- InstitutoSQLiteDAOImp
+InstitutoDAOImp ..|> InstitutoDAO
+InstitutoSQLiteDAOImpMock ..|> InstitutoDAO
+@enduml

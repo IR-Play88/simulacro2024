@@ -1,0 +1,29 @@
+@startuml ClasesException
+set separator none
+
+class Exception{
+
+}
+package model.exception{
+    class InstitutoException{
+
+    }
+
+    class FicheroException{
+
+    }
+
+    class BBDDException{
+
+    }
+
+    class ExportException{
+
+    }
+Exception <|-- InstitutoException
+InstitutoException <|-- FicheroException
+InstitutoException <|-- BBDDException
+InstitutoException <|-- ExportException
+    
+}
+@enduml

@@ -1,0 +1,35 @@
+@startuml ClaseInput
+allow_mixing
+set separator none
+top to bottom direction
+
+package model.util.input{
+    interface Fichero{
+
+    }
+
+    enum Formato{
+
+    }
+
+    class FicheroFactory{
+
+    }
+
+    abstract FicheroImp{
+
+    }
+
+    class FicheroMock{
+
+    }
+
+    class FicheroBinario{
+
+    }
+}
+
+FicheroImp <|-- FicheroBinario
+FicheroImp ..|> Fichero
+FicheroMock ..|> Fichero
+@enduml

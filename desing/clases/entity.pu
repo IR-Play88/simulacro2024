@@ -1,0 +1,16 @@
+@startuml ClasesEntity
+package model.entity{
+
+    class Alumno{
+
+    }
+
+    class Modulo{
+
+    }
+
+    interface Calculable{
+        
+    }
+}
+@enduml

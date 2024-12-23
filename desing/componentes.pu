@@ -45,7 +45,7 @@ package model{
         }
 
         component Instituto <<java>>
-        
+
         Calculable <|.. Instituto
     }
 
@@ -64,21 +64,23 @@ package model{
         }
 
         package export{
-            interface Exportable {
-                + exportar(String extension)
+            interface ExportableUtil{
+                + exportar(ruta:String): void
+                + getUser(): String
+                + getGrupo(): String
             }
 
             component Export <<java>>
         }
-         Fichero <|.. Input
-         Exportable <|.. Export
+        Fichero <|.. Input
+        ExportableUtil <|.. Export
     }
 }
 
 ViewController ..> View: use
 ViewController ..> InstitutoController: use
 
-InstitutoController ..> Exportable: use
+InstitutoController ..> ExportableUtil: use
 InstitutoController ..> Fichero: use
 InstitutoController ..> InstitutoException: use
 InstitutoController ..> Calculable: use
